@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Indira's page</title>
+  </head>
+  <body>
+
+    <div id="app"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.1.0/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.1.0/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+
+    <script type="text/babel">
+
+      class Picture extends React.Component {
+        constructor() {
+        super();
+        this.state = {
+         count: 0,
+      };
+    }
+
+      updateCount() {
+       this.setState((prevState, props) => {
+        return { count: prevState.count + 1 }
+      });
+    }
+
+      render() {
+        return (
+            <div>
+              <img src={this.props.image} alt="Profile picture"/>
+              <h1>Hi, my name is {this.props.name}! :)</h1>
+              <button
+               onClick={() => this.updateCount()}
+              >
+               Liked {this.state.count} times
+              </button>
+            </div>
+          );
+        }
+      }
+
+      const info = {
+       name: "Indira",
+       image: 'https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/22552770_1721937741211757_702939765039202607_n.jpg?_nc_cat=0&oh=2bec3bab08c5aa24d613663339aa5f11&oe=5C35E351',
+      }
+
+
+      ReactDOM.render(
+        <Picture
+          name={info.name}
+          image={info.image}/>,document.getElementById('app')
+
+      );
+
+
+
+</script>
+  </body>
+</html>
